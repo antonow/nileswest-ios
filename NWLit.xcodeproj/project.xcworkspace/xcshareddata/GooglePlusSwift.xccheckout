@@ -10,31 +10,31 @@
 	<string>GooglePlusSwift</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DB6D346385A25D5018F709B653EDEFB9081F8A6B</key>
-		<string>https://github.com/olivaresf/GooglePlusSwift.git</string>
+		<key>C3AC6537234B40AAB44BCAEAE906F4080533A412</key>
+		<string>https://github.com/antonow/nileswest-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GooglePlusSwift/GooglePlusSwift.xcodeproj</string>
+	<string>GooglePlusSwift.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DB6D346385A25D5018F709B653EDEFB9081F8A6B</key>
-		<string>../../..</string>
+		<key>C3AC6537234B40AAB44BCAEAE906F4080533A412</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/olivaresf/GooglePlusSwift.git</string>
+	<string>https://github.com/antonow/nileswest-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DB6D346385A25D5018F709B653EDEFB9081F8A6B</string>
+	<string>C3AC6537234B40AAB44BCAEAE906F4080533A412</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DB6D346385A25D5018F709B653EDEFB9081F8A6B</string>
+			<string>C3AC6537234B40AAB44BCAEAE906F4080533A412</string>
 			<key>IDESourceControlWCCName</key>
-			<string>GooglePlusSwift</string>
+			<string>NWLC-iOS</string>
 		</dict>
 	</array>
 </dict>

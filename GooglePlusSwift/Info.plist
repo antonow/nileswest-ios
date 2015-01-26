@@ -26,10 +26,10 @@
 			<key>CFBundleURLIconFile</key>
 			<string></string>
 			<key>CFBundleURLName</key>
-			<string>com.alex.GooglePlusSwift</string>
+			<string>com.alex.NWLit</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.alex.GooglePlusSwift</string>
+				<string>com.alex.NWLit</string>
 			</array>
 		</dict>
 	</array>

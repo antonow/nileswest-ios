@@ -23,9 +23,28 @@
                                     <action selector="switchClicked:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Yjs-Ii-qpN"/>
                                 </connections>
                             </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wqy-he-3KL">
+                                <rect key="frame" x="241" y="166" width="119" height="29"/>
+                                <segments>
+                                    <segment title="Accept"/>
+                                    <segment title="Decline"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="dI9-d8-Pj1"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Accept Selected" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sSP-R4-RCt">
+                                <rect key="frame" x="232" y="121" width="128" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="wqy-he-3KL" id="W3h-xz-EcK"/>
+                        <outlet property="textLabel" destination="sSP-R4-RCt" id="fs8-Kb-Fcy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

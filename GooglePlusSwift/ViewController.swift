@@ -19,10 +19,53 @@ class ViewController: UIViewController, GPPSignInDelegate {
     
     var email = ""
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var textLabel: UITextField!
+    
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            textLabel.text = "Accept selected";
+            
+            let request = NSMutableURLRequest(URL: NSURL(string: "http://nileswest.herokuapp.com/change_status")!)
+            request.HTTPMethod = "POST"
+            
+            let name = ""
+            let subject = ""
+            
+            let postString = "email="+email+"&secret_key=DEVISING&name="+name+"&subject="+subject
+            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    println("error=\(error)")
+                    return
+                }
+                
+                println("response = \(response)")
+                
+                let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("responseString = \(responseString)")
+            }
+            task.resume()
+
+        case 1:
+            textLabel.text = "Decline selected";
+        default:
+            break;
+        }
+
+    }
+    
+    
+    
     @IBAction func switchClicked(sender: UISwitch) {
         
             println("switch has been clicked")
-            
+        
             let request = NSMutableURLRequest(URL: NSURL(string: "http://nileswest.herokuapp.com/change_status")!)
             request.HTTPMethod = "POST"
             var status = 2
@@ -46,9 +89,6 @@ class ViewController: UIViewController, GPPSignInDelegate {
                 println("responseString = \(responseString)")
             }
             task.resume()
-            
-            
-            
        
     }
     
@@ -82,11 +122,60 @@ class ViewController: UIViewController, GPPSignInDelegate {
         println(auth.userEmail)
         email = auth.userEmail
         println("======")
+        var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
+        var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
+        
+        // Sets up Mobile Push Notification
+        let readAction = UIMutableUserNotificationAction()
+        readAction.identifier = "READ_IDENTIFIER"
+        readAction.title = "Read"
+        readAction.activationMode = UIUserNotificationActivationMode.Foreground
+        readAction.destructive = false
+        readAction.authenticationRequired = true
+        
+        let deleteAction = UIMutableUserNotificationAction()
+        deleteAction.identifier = "DELETE_IDENTIFIER"
+        deleteAction.title = "Delete"
+        deleteAction.activationMode = UIUserNotificationActivationMode.Foreground
+        deleteAction.destructive = true
+        deleteAction.authenticationRequired = true
+        
+        let ignoreAction = UIMutableUserNotificationAction()
+        ignoreAction.identifier = "IGNORE_IDENTIFIER"
+        ignoreAction.title = "Ignore"
+        ignoreAction.activationMode = UIUserNotificationActivationMode.Foreground
+        ignoreAction.destructive = false
+        ignoreAction.authenticationRequired = false
+        
+        let messageCategory = UIMutableUserNotificationCategory()
+        messageCategory.identifier = "MESSAGE_CATEGORY"
+        messageCategory.setActions([readAction, deleteAction], forContext: UIUserNotificationActionContext.Minimal)
+        messageCategory.setActions([readAction, deleteAction, ignoreAction], forContext: UIUserNotificationActionContext.Default)
+        
+        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: NSSet(object: messageCategory))
+        
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+            if identifier == "READ_IDENTIFIER" {
+                println("User selected 'Read'")
+                
+            } else if identifier == "DELETE_IDENTIFIER" {
+                println("User selected 'Delete'")
+            }
+            
+            completionHandler()
+        }
+        
     }
     
     func didDisconnectWithError(error: NSError!) {
         println(error.localizedDescription)
         
     }
+    
+    
 }
 
